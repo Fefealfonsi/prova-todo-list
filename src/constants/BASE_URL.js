@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://prova-mobile.azurewebsites.net/api'
