@@ -1,11 +1,9 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Alert, Text } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../../constants/BASE_URL';
 
-
-export default function Login() {
-
+export default function Login({navigation}) {
 
   const [email, setEmail] = useState(" ")
   const [password, setPassword] = useState(" ")
@@ -13,17 +11,19 @@ export default function Login() {
 
 
   const login=()=>{
+
     const body={
       email:email,
       password:password
     }
     axios
-    .post(`${BASE_URL}/api/Auth`, body)
-    .then((response)=>{
-      console.log(response.data);
+    .post(`${BASE_URL}/Auth`, body)
+    .then((res)=>{
+      console.log(res.data);
+      Alert(res.data);
     })
-    .catch((error)=>{
-      Alert(error);
+    .catch((err)=>{
+      Alert(err.message)
     })
   }
 
@@ -39,29 +39,32 @@ export default function Login() {
 
     <View style={styles.container}>
 
+      <Text style={styles.title}>Acessar</Text>
+        <Text style={styles.textInput}>Email</Text>
         <TextInput
-        // value ={email}
-        placeholder='E-mail'
+        value ={email}
         keyboardType='email'
-        // onChangeText={(mail)=>{setEmail(mail)}}
-        />      
+        style={styles.input}
+        onChangeText={(text)=>{setEmail(text)}}
+        />   
+        <Text style={styles.textInput}>Senha</Text>
+
         <TextInput
-        // value ={password}
-        placeholder='Senha'
+        value ={password}
         keyboardType='password'
-        // onChangeText={(pass)=>{setPassword(pass)}}
+        onChangeText={(text)=>{setPassword(text)}}
         style={styles.input}
         />      
 
         <Button
-        title='Logar'
-        onPress={enviarLogin}
-        />
-        <Button
-        title='Ainda não tem cadastro? Clique aqui!'
+        title='Acessar'
+        style={styles.button}
+        color='#31bcdd'
+        onPress={enviarLogin} />
+         <Text style={styles.signup} onPress={()=>navigation.navigate('Signup')}>Criar uma conta</Text>
 
-        />
-      {/* <StatusBar style="auto" /> */}
+         
+      
     </View>
   );
 }
@@ -69,12 +72,33 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffe6e6',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff',
+    padding:30,
+    
   },
   input:{
+   padding:5,
+    color:'black',
+    borderColor:'grey',
+    borderRadius:5,
+    borderWidth:1,
+    marginBottom:20,
+  },
+  textInput:{
+    fontWeight:'bold',
+    marginBottom:10,
+  },
+  title:{
     fontSize:30,
-    color:'black'
+    marginBottom:50,
+    fontWeight:'bold',
+  },
+  signup:{
+    color:'blue',
+    fontSize:16,
+    textAlign:'center',
+    color:'#31bcdd',
+    marginTop:20,
+    fontWeight:'bold',
   }
 });
