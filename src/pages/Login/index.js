@@ -1,70 +1,71 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { StyleSheet, View, TextInput, Button, Alert, Text } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../../constants/BASE_URL';
-
+import {useForm } from 'react-hook-form'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Input } from '../../components/Input';
 export default function Login({navigation}) {
 
-  const [email, setEmail] = useState(" ")
-  const [password, setPassword] = useState(" ")
 
-
-
-  const login=()=>{
-
-    const body={
-      email:email,
-      password:password
+  const {control, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
     }
-    axios
-    .post(`${BASE_URL}/Auth`, body)
+  });
+  const onSubmit = data => login(data);
+
+  
+  const login=(data)=>{
+    
+    const body={
+      email:data.email,
+      password:data.password
+    }
+   
+    axios.post(`${BASE_URL}/Auth`, body)
     .then((res)=>{
-      console.log(res.data);
-      Alert(res.data);
+      console.log('Logou');
+      AsyncStorage.setItem('token',res.data.token)
+      navigation.navigate('Home')
+     
     })
     .catch((err)=>{
-      Alert(err.message)
+      
+      alert(err.message);
     })
   }
 
-  const enviarLogin=()=>{
-    login()
-    setPassword("")
-    setEmail("")
-
-
-  }
   return (
-
-
     <View style={styles.container}>
-
       <Text style={styles.title}>Acessar</Text>
-        <Text style={styles.textInput}>Email</Text>
-        <TextInput
-        value ={email}
-        keyboardType='email'
-        style={styles.input}
-        onChangeText={(text)=>{setEmail(text)}}
-        />   
-        <Text style={styles.textInput}>Senha</Text>
-
-        <TextInput
-        value ={password}
-        keyboardType='password'
-        onChangeText={(text)=>{setPassword(text)}}
-        style={styles.input}
-        />      
-
+      <Input
+      control={control}
+      label={"Email"}
+      type={"email"}
+      errors={errors.email}
+      pattern={/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i}
+      messagePattern={"Formato de e-mail invalido"}
+      message={"Email obrigatório"}
+      />
+      <Input
+      control={control}
+      label={"Senha"}
+      type={"password"}
+      errors={errors.password}
+      pattern={/^.{6,}$/}
+      messagePattern={"Mínimo de 6 caracteres"}
+      message={"Senha obrigatória"}
+      />
+              
         <Button
         title='Acessar'
         style={styles.button}
         color='#31bcdd'
-        onPress={enviarLogin} />
+        onPress={handleSubmit(onSubmit)} />
          <Text style={styles.signup} onPress={()=>navigation.navigate('Signup')}>Criar uma conta</Text>
 
-         
-      
     </View>
   );
 }
@@ -75,18 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding:30,
     
-  },
-  input:{
-   padding:5,
-    color:'black',
-    borderColor:'grey',
-    borderRadius:5,
-    borderWidth:1,
-    marginBottom:20,
-  },
-  textInput:{
-    fontWeight:'bold',
-    marginBottom:10,
   },
   title:{
     fontSize:30,
@@ -100,5 +89,6 @@ const styles = StyleSheet.create({
     color:'#31bcdd',
     marginTop:20,
     fontWeight:'bold',
-  }
+  },
+  
 });

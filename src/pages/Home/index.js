@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleSheet, View, TextInput, Button, Alert, Text, } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Home() {
+
+
+
+
     return (
         <View style={styles.container}>
             <View style={styles.userContainer}>
                 <Text>Olá, Fulano</Text>
-                <Text style={styles.out}>Sair</Text>
+                <Text style={styles.out} onPress={logout}>Sair</Text>
             </View>
-            
-
-
-
-
+                
 
         </View>
     )
