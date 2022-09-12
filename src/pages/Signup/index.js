@@ -4,14 +4,14 @@ import axios from 'axios';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useForm } from 'react-hook-form'
 import { Input } from '../../components/Input';
-
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Signup({navigation}){
   
   const[passConfirm, setPassConfirm]=useState('')
   const[noConfirm, setNoConfirm]=useState(false)
   
-  console.log(noConfirm);
+  
   const {control, handleSubmit,formState: {errors} } = useForm({
     defaultValues: {
       name:'',
@@ -21,7 +21,7 @@ export default function Signup({navigation}){
   });
   const onSubmit = data => sigup(data);
   
-
+  
    
    const sigup=(data)=>{
       if(data.password===passConfirm){

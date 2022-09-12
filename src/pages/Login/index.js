@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, Button, Alert, Text } from 'react-native';
+import { StyleSheet, View, Button,Text } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../../constants/BASE_URL';
 import {useForm } from 'react-hook-form'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Input } from '../../components/Input';
+
 export default function Login({navigation}) {
 
 
@@ -28,6 +29,7 @@ export default function Login({navigation}) {
     .then((res)=>{
       console.log('Logou');
       AsyncStorage.setItem('token',res.data.token)
+      console.log('DARA',res.data.token);
       navigation.navigate('Home')
      
     })
