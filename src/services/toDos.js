@@ -1,7 +1,7 @@
 import { BASE_URL } from "../constants/BASE_URL"
 import axios from 'axios'
-import { useRequestData } from "../hooks/useRequestData"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+
+
 
 
 
@@ -12,8 +12,6 @@ export const createTask=(data, token)=>{
     .then((res)=>{
         alert('Tarefa cadastrada com sucesso')
         
-
-        // useRequestData(`${BASE_URL}/ToDos`,undefined,auth)
     })
     .catch((err)=>{
         alert(err.message)

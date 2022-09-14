@@ -21,7 +21,6 @@ export default function ModalSubItem(props) {
             <Modal
                 animationType='side'
                 transparent={true}
-
             >
                 <View style={styles.modal}>
                     <View style={styles.taskContainer}>
@@ -48,7 +47,6 @@ export default function ModalSubItem(props) {
 
                     </View>
                 </View>
-
             </Modal>
         </View>
     )

@@ -1,3 +1,6 @@
+//HELP=> Essas foram minhas tentativas de conseguir pegar as informações do tokem. 
+
+
 // import jwt from "jsonwebtoken";
 
 // export function getTokenData(token){

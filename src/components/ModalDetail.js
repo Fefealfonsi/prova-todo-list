@@ -11,7 +11,7 @@ import { BASE_URL } from '../constants/BASE_URL';
 import ModalSubItem from './ModalSubItem';
 export default function ModalDetail(props) {
 
- const [sub, setSub]=useState(false)
+    const [sub, setSub] = useState(false)
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
@@ -19,15 +19,12 @@ export default function ModalDetail(props) {
         }
     });
     const onSubmit = data => updateTask(data, props.token, props.id)
-
-    const subItens = useRequestData(`${BASE_URL}/ToDos/${props.id}`, undefined, props.token)
-    console.log('SUB',subItens);
-    const subItensList = subItens && subItens.items.map((item)=>{
-        return(
+    const subItensList = props.subItens && props.subItens.items.map((item) => {
+        return (
             <SubItem
-            id={item.id}
-            titulo={item.name}
-            token={props.token}
+                id={item.id}
+                titulo={item.name}
+                token={props.token}
             />
 
         )
@@ -42,7 +39,7 @@ export default function ModalDetail(props) {
                     <View style={styles.taskContainer}>
 
                         <View style={styles.textContainer}>
-                            <Text style={styles.text}>Detalhe da tarefa {props.titulo} </Text>
+                            <Text style={styles.text}>Detalhe da tarefa</Text>
                             <Text style={styles.out} onPress={() => props.setDetail(false)}>Fechar</Text>
                         </View>
                         <Input
@@ -51,7 +48,7 @@ export default function ModalDetail(props) {
                             type={"name"}
                             errors={errors.name}
                             pattern={/^.{2,}$/}
-                            messagePattern={"A tarefa deve conter apenas letras e ter mais que 2 caracteres"}
+                            messagePattern={"A tarefa deve ter mais que 2 caracteres"}
                             message={" Campo Obrigatório"}
                         />
 
@@ -65,12 +62,10 @@ export default function ModalDetail(props) {
                             <Text style={styles.text}> Sub-itens</Text>
                             <Text style={styles.add} onPress={() => setSub(true)}>Adicionar</Text>
                         </View>
-                            {subItens && subItens.items.length===0?<NoSubItem/>:subItensList}
-                            {sub && <ModalSubItem setSub={setSub} token={props.token} id={props.id} />}
-
+                        {props.subItens && props.subItens.items.length === 0 ? <NoSubItem /> : subItensList}
+                        {sub && <ModalSubItem setSub={setSub} token={props.token} id={props.id} />}
                     </View>
                 </View>
-
             </Modal>
         </View>
     )
@@ -96,12 +91,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#fff',
         borderTopColor: '#979a9c',
-        borderTopWidth:1,
+        borderTopWidth: 1,
         height: 30,
         marginTop: 20,
 
     },
-    text:{
+    text: {
         fontWeight: 'bold'
 
     },
@@ -114,9 +109,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold'
     },
-    add:{
+    add: {
         fontWeight: 'bold',
-        color:'#31bcdd',
+        color: '#31bcdd',
     },
     modal: {
         backgroundColor: 'rgba(0,0,0,0.3)',
@@ -124,7 +119,7 @@ const styles = StyleSheet.create({
     },
     taskContainer: {
         backgroundColor: '#fff',
-        minHeight:350,
+        minHeight: 350,
         padding: 30,
         marginTop: 130,
     }

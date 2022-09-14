@@ -7,7 +7,7 @@ import Task from '../../components/Task';
 import NoTask from '../../components/NoTask';
 import { BASE_URL } from '../../constants/BASE_URL';
 import ModalTask from '../../components/ModalTask';
-import { logout } from '../../services/toDos';
+import { logout } from '../../services/user';
 import ModalDetail from '../../components/ModalDetail';
 export default function Home({ navigation }) {
 
@@ -20,9 +20,10 @@ export default function Home({ navigation }) {
 
     useEffect(() => {
         (async () => {
-            AsyncStorage.getItem('token', (err, item) => {
-                setToken(item)
-                console.log("ITEM=>", item)
+            AsyncStorage.getItem('token', (err, token) => {
+                setToken(token)
+                // console.log("ITEM=>", token)
+                // HELP=>mais uma tentativa de pegar as informações do usuário contidas no token.
                 // const decoded = jwt_decode(token);
                 // setData(decoded)
             })
@@ -33,7 +34,7 @@ export default function Home({ navigation }) {
    
     const tasks = useRequestData(`${BASE_URL}/ToDos`, undefined, token)
     
-    console.log("CASTASK",tasks);
+    // console.log("CASTASK",tasks);
 
     const tasksList = tasks && tasks.items.map((task) => { 
         return (
@@ -43,21 +44,17 @@ export default function Home({ navigation }) {
                 token={token}
                 setDetail={setDetail}
                 detail={detail}
+             
             />
         )
     })
 
-const logout = () => {
-    AsyncStorage.removeItem('token')
-    setToken('')
-    console.log('Deslogou');
-    navigation.navigate('Login')
-}
+
     return (
         <View style={styles.container}>
             <View style={styles.userContainer}>
                 <Text>Olá Fulano </Text>
-                <Text style={styles.out} onPress={logout}>Sair</Text>
+                <Text style={styles.out} onPress={()=>logout(setToken, navigation)}>Sair</Text>
             </View>
             <Button
                 title='Cadastrar tarefa'

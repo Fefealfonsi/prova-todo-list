@@ -20,7 +20,6 @@ export default function ModalTask(props) {
             <Modal
                 animationType='side'
                 transparent={true}
-
             >
                 <View style={styles.modal}>
                     <View style={styles.taskContainer}>
@@ -44,10 +43,8 @@ export default function ModalTask(props) {
                             color='#31bcdd'
                             onPress={handleSubmit(onSubmit)}
                         />
-
                     </View>
                 </View>
-
             </Modal>
         </View>
     )
