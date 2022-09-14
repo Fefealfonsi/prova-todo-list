@@ -47,7 +47,7 @@ $ npm run start
 1. [Expo-Go](https://apps.apple.com/br/app/expo-go/id982107779)
 
 
-## 🤓 Pessoas Autoras
+## 🤓Pessoas Autoras
 
 ### Fernanda Garcia ALfonsi
 
@@ -56,7 +56,7 @@ $ npm run start
 <a href = "mailto:fefealfonsi@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
  <a href="https://linkedin.com/in/https://www.linkedin.com/in/fernanda-alfonsi-93613a201/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 
-## 👟 Próximos Passos
+## 👟Próximos Passos
 
 - [ ] Implementar stado global
 - [ ] Corrigir Bugs
