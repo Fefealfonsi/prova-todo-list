@@ -1,7 +1,7 @@
-# prova-todo-list
+# prova-todo-list 🗒️
 
 
-## Índice
+## 🗂️Índice
 - <a href="#funcionalidades-do-projeto">Funcionalidades do Projeto</a>
 - <a href="#como-rodar-este-projeto">Como rodar este projeto?</a>
 - <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
@@ -20,7 +20,7 @@
  - [x] Deleção de subitens
 
 
-## Como rodar este projeto?
+## 🎦Como rodar este projeto?
 
 ```bash
 # Clone este repositório
