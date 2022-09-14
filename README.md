@@ -3,10 +3,10 @@
 
 ## Índice
 - <a href="#funcionalidades-do-projeto">Funcionalidades do Projeto</a>
-- <a href="#rodar">Como rodar este projeto?</a>
-- <a href="#tecnologias">Tecnologias Utilizadas</a>
-- <a href="#autoras">Pessoas Autoras</a>
-- <a href="#passos">Próximos Passos</a>
+- <a href="#como-rodar-este-projeto">Como rodar este projeto?</a>
+- <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
+- <a href="#pessoas-autoras">Pessoas Autoras</a>
+- <a href="#próximos-passos">Próximos Passos</a>
 
  ## 📱Funcionalidades do Projeto
 
@@ -46,7 +46,8 @@ $ npm run start
 4. [React-async-storage](https://react-native-async-storage.github.io/async-storage/docs/install/)
 1. [Expo-Go](https://apps.apple.com/br/app/expo-go/id982107779)
 
-## 🤓 Pessoa Autora
+
+## 🤓 Pessoas Autoras
 
 ### Fernanda Garcia ALfonsi
 
@@ -55,7 +56,7 @@ $ npm run start
 <a href = "mailto:fefealfonsi@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
  <a href="https://linkedin.com/in/https://www.linkedin.com/in/fernanda-alfonsi-93613a201/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 
-## 👟 Proximos passos
+## 👟 Próximos Passos
 
 - [ ] Implementar stado global
 - [ ] Corrigir Bugs
