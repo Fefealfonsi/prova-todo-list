@@ -40,7 +40,7 @@ $ npm run start
 
 ## 🛠Tecnologias Utilizadas
 
-1. [React](https://pt-br.reactjs.org/)
+1. [React-native](https://reactnative.dev/)
 2. [React-hook-form"](https://react-hook-form.com/)
 3. [React-navigation](https://reactnavigation.org/)
 4. [React-async-storage](https://react-native-async-storage.github.io/async-storage/docs/install/)
